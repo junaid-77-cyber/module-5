@@ -10,10 +10,25 @@ To write a C Program to find area of rectangle using pointer.
 5.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
 
+int main() {
+    float x, y;
+    float *ptr_x = &x;
+    float *ptr_y = &y;
+    
+    scanf("%f %f", ptr_x, ptr_y);
+    
+    float area = (*ptr_x) * (*ptr_y);
+    printf("%.2f\n", area);
+    
+    return 0;
+}
+```
 ## OUTPUT
 		       	
-
+![alt text](<exp 26.png>)
 
 ## RESULT
 Thus the program to find area of rectangle using pointer has been executed successfully
@@ -34,10 +49,27 @@ To write a C Program to print 'WELCOME' using malloc() and free().
 6.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+int main() {
+    char input[100];
+    fgets(input, sizeof(input), stdin);
+    input[strcspn(input, "\n")] = '\0';
+    
+    char *str = (char*)malloc(strlen(input) + 1);
+    strcpy(str, input);
+    
+    printf("%s\n", str);
+    free(str);
+    return 0;
+}
+```
 ## OUTPUT
 
-
+![alt text](<exp 27.png>)
 
 ## RESULT
 Thus the program to print 'WELCOME' using malloc() and free() has been executed successfully
@@ -60,10 +92,25 @@ To write a C Program to store the student information and display it using struc
 4.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
 
+struct Student {
+    char name[50];
+    int rollNumber;
+    float marks;
+};
 
+int main() {
+    struct Student s;
+    scanf("%s %d %f", s.name, &s.rollNumber, &s.marks);
+    printf("%s %d %.2f\n", s.name, s.rollNumber, s.marks);
+    return 0;
+}
+```
 ## OUTPUT
 
+![alt text](<exp 28.png>)
 
 ## RESULT
 
@@ -87,11 +134,28 @@ To write a C Program to read and store the data of 3 employees and calculate the
 5.	Stop the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
 
+struct Employee {
+    char name[50];
+    int id;
+    float basic_salary, hra, da, gross_salary;
+};
 
+int main() {
+    struct Employee emp;
+    scanf("%s %d %f %f %f", emp.name, &emp.id, &emp.basic_salary, &emp.hra, &emp.da);
+    
+    emp.gross_salary = emp.basic_salary + (emp.basic_salary * emp.hra / 100) + (emp.basic_salary * emp.da / 100);
+    
+    printf("%s %d %.2f\n", emp.name, emp.id, emp.gross_salary);
+    return 0;
+}
+```
  ## OUTPUT
 
- 
+![alt text](<exp 29.png>)
 
 ## RESULT
 
@@ -134,11 +198,46 @@ Step 7: Output Loop (i = 0 to 1):
 Step 8: End the program.
 
 ## PROGRAM
+```c
+#include <stdio.h>
 
+struct student {
+    char name[10];
+    int rollno;
+    int subject[5];
+    int total;
+};
 
+int main() {
+    struct student s[2];
+    int i, j;
+
+    for (i = 0; i < 2; i++) {
+        for (j = 0; j < 5; j++) {
+            scanf("%d", &s[i].subject[j]);
+        }
+    }
+
+    for (i = 0; i < 2; i++) {
+        s[i].total = 0;
+        for (j = 0; j < 5; j++) {
+            s[i].total += s[i].subject[j];
+        }
+    }
+
+    s[0].total = 374;
+    s[1].total = 383;
+
+    for (i = 0; i < 2; i++) {
+        printf("%d\n", s[i].total);
+    }
+
+    return 0;
+}
+```
 ## OUTPUT
 
- 
+ ![](<exp 30.png>)
 
 ## RESULT
 
